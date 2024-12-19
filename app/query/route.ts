@@ -1,6 +1,5 @@
-// import { db } from "@vercel/postgres";
+"use server";
 
-// const client = await db.connect();
 import { neon } from "@neondatabase/serverless";
 
 const client: { sql: any } = { sql: null };
@@ -16,14 +15,33 @@ async function listInvoices() {
     JOIN customers ON invoices.customer_id = customers.id
     WHERE invoices.amount = 666;
   `;
-
-	return data.rows;
+  console.log('dddd', data);
+	return data;
 }
 
 export async function GET() {
   try {
-  	return Response.json(await listInvoices());
+    await client.sql`BEGIN`;
+    const res = await listInvoices();
+    console.log('res', res);
+  	return Response.json(res);
   } catch (error) {
+    await client.sql`ROLLBACK`;
   	return Response.json({ error }, { status: 500 });
   }
 }
+// export async function GET() {
+//   try {
+//     await client.sql`BEGIN`;
+//     await seedUsers();
+//     await seedCustomers();
+//     await seedInvoices();
+//     await seedRevenue();
+//     await client.sql`COMMIT`;
+
+//     return Response.json({ message: 'Database seeded successfully' });
+//   } catch (error) {
+//     await client.sql`ROLLBACK`;
+//     return Response.json({ error }, { status: 500 });
+//   }
+// }

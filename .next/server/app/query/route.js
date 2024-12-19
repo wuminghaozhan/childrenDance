@@ -1,6 +1,6 @@
 const CHUNK_PUBLIC_PATH = "server/app/query/route.js";
 const runtime = require("../../chunks/[turbopack]_runtime.js");
-runtime.loadChunk("server/chunks/node_modules__pnpm_2eff83._.js");
+runtime.loadChunk("server/chunks/node_modules__pnpm_a22bbc._.js");
 runtime.loadChunk("server/chunks/[root of the server]__f80793._.js");
 runtime.loadChunk("server/chunks/_2a979b._.js");
 runtime.getOrInstantiateRuntimeModule("[project]/.next-internal/server/app/query/route/actions.js [app-rsc] (ecmascript)", CHUNK_PUBLIC_PATH);
