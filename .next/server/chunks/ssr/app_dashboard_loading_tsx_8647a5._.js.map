@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/eeo/personal/myNext/childrenDance/app/dashboard/loading.tsx"],"sourcesContent":["\nexport default function Loading() {\n    return <div>Loading...</div>;\n}"],"names":[],"mappings":";;;;;AACe,SAAS;IACpB,qBAAO,6WAAC;kBAAI;;;;;;AAChB"}},
+    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
