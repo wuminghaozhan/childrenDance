@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 import { neon } from "@neondatabase/serverless";
 
-const client: { sql: any } = { sql: null };
+const client: { sql } = { sql: null };
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is not defined');
 }

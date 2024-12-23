@@ -2,7 +2,7 @@
 
 import { neon } from "@neondatabase/serverless";
 
-const client: { sql: any } = { sql: null };
+const client: { sql } = { sql: null };
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is not defined');
 }
@@ -30,18 +30,3 @@ export async function GET() {
   	return Response.json({ error }, { status: 500 });
   }
 }
-// export async function GET() {
-//   try {
-//     await client.sql`BEGIN`;
-//     await seedUsers();
-//     await seedCustomers();
-//     await seedInvoices();
-//     await seedRevenue();
-//     await client.sql`COMMIT`;
-
-//     return Response.json({ message: 'Database seeded successfully' });
-//   } catch (error) {
-//     await client.sql`ROLLBACK`;
-//     return Response.json({ error }, { status: 500 });
-//   }
-// }
