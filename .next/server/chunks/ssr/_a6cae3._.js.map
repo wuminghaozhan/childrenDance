@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/eeo/personal/myNext/childrenDance/app/index/home/page.tsx"],"sourcesContent":["const Home = () => {\n    return (\n        <div>\n        <h1>Home</h1>\n        </div>\n    );\n}\n\nexport default Home;"],"names":[],"mappings":";;;;;AAAA,MAAM,OAAO;IACT,qBACI,kZAAC;kBACD,cAAA,kZAAC;sBAAG;;;;;;;;;;;AAGZ;uCAEe"}},
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 39, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 39, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

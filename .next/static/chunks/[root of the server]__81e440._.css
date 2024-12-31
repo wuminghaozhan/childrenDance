@@ -1217,6 +1217,10 @@ select {
   line-height: 2rem;
 }
 
+.text-\[20px\] {
+  font-size: 20px;
+}
+
 .text-\[44px\] {
   font-size: 44px;
 }
@@ -1234,22 +1238,6 @@ select {
 .text-xs {
   font-size: .75rem;
   line-height: 1rem;
-}
-
-.text-\[32px\] {
-  font-size: 32px;
-}
-
-.text-\[28px\] {
-  font-size: 28px;
-}
-
-.text-\[24px\] {
-  font-size: 24px;
-}
-
-.text-\[20px\] {
-  font-size: 20px;
 }
 
 .font-medium {
@@ -1368,6 +1356,15 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+:root {
+  --primary-pink: #ff69b4;
+  --primary-blue: #87ceeb;
+  --secondary-pink: #ffb6c1;
+  --secondary-blue: #add8e6;
+  --background-color: #f0f8ff;
+  --text-color: #333;
 }
 
 .placeholder\:text-gray-500::-moz-placeholder {

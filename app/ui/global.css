@@ -16,3 +16,12 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+:root {
+  --primary-pink: #ff69b4; /* 粉色 */
+  --primary-blue: #87ceeb; /* 天蓝色 */
+  --secondary-pink: #ffb6c1; /* 浅粉色 */
+  --secondary-blue: #add8e6; /* 浅蓝色 */
+  --background-color: #f0f8ff; /* 浅蓝背景色 */
+  --text-color: #333; /* 深色文本 */
+}

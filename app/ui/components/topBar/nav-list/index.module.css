@@ -1,0 +1,9 @@
+.navList {
+    display: flex;
+    .nav {
+        color: #000;
+    }
+    .activeNav {
+        color: pink
+    }
+}
