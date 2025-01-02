@@ -1,7 +1,11 @@
 {
-  "/dashboard/(overview)/page": "app/dashboard/(overview)/page.js",
-  "/login/page": "app/login/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/index/home/page": "app/index/home/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/index/home/page": "app/index/home/page.js"
+  "/index/blessing/page": "app/index/blessing/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/index/contact/page": "app/index/contact/page.js",
+  "/index/letter/page": "app/index/letter/page.js",
+  "/index/students/page": "app/index/students/page.js",
+  "/index/about/page": "app/index/about/page.js"
 }

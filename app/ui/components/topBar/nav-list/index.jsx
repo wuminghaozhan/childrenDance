@@ -9,7 +9,7 @@ export default function NavList() {
         { title: '首页', link: '/index/home' },
         { title: '关于我们', link: '/index/about' },
         { title: '联系我们', link: '/index/contact' },
-        { title: '学员风采', link: '/index/student' },
+        { title: '学员风采', link: '/index/students' },
         { title: '幸福寄语', link: '/index/blessing' },
         { title: '写给家长的信', link: '/index/letter' },
     ]

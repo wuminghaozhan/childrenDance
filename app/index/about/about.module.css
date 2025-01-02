@@ -1,0 +1,27 @@
+/* filepath: /Users/eeo/personal/myNext/childrenDance/app/index/about/about.module.css */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.section-content {
+    font-size: 1rem;
+    line-height: 1.5;
+}

@@ -75,7 +75,7 @@ function NavList() {
         },
         {
             title: '学员风采',
-            link: '/index/student'
+            link: '/index/students'
         },
         {
             title: '幸福寄语',
