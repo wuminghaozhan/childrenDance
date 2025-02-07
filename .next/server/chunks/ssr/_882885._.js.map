@@ -1,9 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/eeo/personal/myNext/childrenDance/app/dashboard/customers/page.tsx"],"sourcesContent":["export default function Page() {\n    return <p>Customers Page</p>;\n  }"],"names":[],"mappings":";;;;;AAAe,SAAS;IACpB,qBAAO,6XAAC;kBAAE;;;;;;AACZ"}},
-    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
-    {"offset": {"line": 33, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
-    {"offset": {"line": 35, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

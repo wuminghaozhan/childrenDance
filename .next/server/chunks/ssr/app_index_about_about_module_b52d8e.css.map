@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/app/index/about/about.module.css"],"sourcesContent":["/* filepath: /Users/eeo/personal/myNext/childrenDance/app/index/about/about.module.css */\n.container {\n    max-width: 800px;\n    margin: 0 auto;\n    padding: 1rem;\n}\n\n.title {\n    font-size: 2rem;\n    font-weight: bold;\n    margin-bottom: 1rem;\n}\n\n.section {\n    margin-bottom: 2rem;\n}\n\n.section-title {\n    font-size: 1.5rem;\n    font-weight: 600;\n    margin-bottom: 0.5rem;\n}\n\n.section-content {\n    font-size: 1rem;\n    line-height: 1.5;\n}"],"names":[],"mappings":"AACA;;;;;;AAMA;;;;;;AAMA;;;;AAIA;;;;;;AAMA"}},
-    {"offset": {"line": 27, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
