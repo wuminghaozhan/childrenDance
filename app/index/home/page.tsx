@@ -10,16 +10,12 @@ import React from 'react';
 
 const Home: React.FC = () => {
   return (
-    <div className="container mx-auto">
-      
-
+    <div className="flex-grow">
       <Hero />
       <Courses />
       <Features />
       <StudentShowcase />
       <ContactUs />
-
-      {/* <Footer /> */}
     </div>
   );
 };
