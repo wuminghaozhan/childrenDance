@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { Music4Icon } from "lucide-react"
-import ChildrenDanceLogo from "../ui/components/children-dance-logo"
 
 function LoginForm() {
   const [loginMethod, setLoginMethod] = useState("phone")
@@ -144,13 +143,4 @@ function SignUpFields() {
   )
 }
 
-const LoginPage = () => {
-  return (
-    <main className="flex items-center justify-center md:h-screen">
-      <div className="relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32">
-        <LoginForm />
-      </div>
-    </main>
-  )
-}
-export default LoginPage
+export default LoginForm

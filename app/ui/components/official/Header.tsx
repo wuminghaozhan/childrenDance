@@ -6,39 +6,39 @@ export function Header() {
   return (
     <header className="bg-orange-50 py-4">
       <div className="container mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/index/home" className="flex items-center space-x-2">
           <Music4Icon className="h-8 w-8 text-orange-500" />
           <span className="text-2xl font-bold text-orange-700">舞动童年</span>
         </Link>
         <nav className="flex items-center space-x-6">
           <ul className="flex space-x-6">
             <li>
-              <Link href="/" className="text-orange-700 hover:text-orange-500">
+              <Link href="/index/home" className="text-orange-700 hover:text-orange-500">
                 首页
               </Link>
             </li>
             <li>
-              <Link href="/teachers" className="text-orange-700 hover:text-orange-500">
+              <Link href="/index/teachers" className="text-orange-700 hover:text-orange-500">
                 教师简介
               </Link>
             </li>
             <li>
-              <Link href="/students" className="text-orange-700 hover:text-orange-500">
+              <Link href="/index/students" className="text-orange-700 hover:text-orange-500">
                 学员风采
               </Link>
             </li>
             <li>
-              <Link href="/curriculum" className="text-orange-700 hover:text-orange-500">
+              <Link href="/index/teachPlan" className="text-orange-700 hover:text-orange-500">
                 教学计划
               </Link>
             </li>
             <li>
-              <Link href="/features" className="text-orange-700 hover:text-orange-500">
+              <Link href="/index/teachFeatures" className="text-orange-700 hover:text-orange-500">
                 教学特色
               </Link>
             </li>
             <li>
-              <Link href="/wishes" className="text-orange-700 hover:text-orange-500">
+              <Link href="/index/blessing" className="text-orange-700 hover:text-orange-500">
                 小舞祝福墙
               </Link>
             </li>
