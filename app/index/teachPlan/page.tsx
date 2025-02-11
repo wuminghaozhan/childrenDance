@@ -14,7 +14,15 @@ const ageGroups = [
   { id: "teens", label: "青少年班 (13-16岁)" },
 ]
 
-const curriculumData = {
+interface Curriculum {
+  level: string;
+  duration: string;
+  focus: string;
+  skills: { name: string; progress: number }[];
+  activities: string[];
+}
+
+const curriculumData: { [key: string]: Curriculum[] } = {
   kids: [
     {
       level: "启蒙级",
@@ -50,7 +58,7 @@ const curriculumData = {
 
 function CurriculumPlan() {
   const [selectedAge, setSelectedAge] = useState("kids")
-
+  console.log(selectedAge)
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-pink-50">
       
@@ -120,7 +128,7 @@ function CurriculumLevel({ level }: { level: Level }) {
       </CardHeader>
       <CardContent>
         <h4 className="font-semibold text-orange-700 mb-2">技能提升</h4>
-        {level.skills.map((skill: any, index: number) => (
+        {level.skills.map((skill: { name: string; progress: number }, index: number) => (
           <div key={index} className="mb-4">
             <div className="flex justify-between mb-1">
               <span className="text-sm font-medium text-orange-600">{skill.name}</span>

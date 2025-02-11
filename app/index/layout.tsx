@@ -1,5 +1,3 @@
-import SideNav from '@/app/ui/dashboard/sidenav';
-import TopNav from '../ui/components/topBar';
 import Footer from '../ui/components/footer';
 import { Header } from '../ui/components/official/Header';
 export const experimental_ppr = true;

@@ -10,7 +10,12 @@ import {
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateInvoice } from '@/app/lib/actions';
-import { useActionState } from 'react';
+// import { useActionState } from 'react';
+
+// type State = {
+//   message: string | null;
+//   errors: Record<string, string>;
+// };
 
 export default function EditInvoiceForm({
   invoice,
@@ -19,12 +24,14 @@ export default function EditInvoiceForm({
   invoice: InvoiceForm;
   customers: CustomerField[];
 }) {
-  const initialState: State = { message: null, errors: {} };
-  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
-  const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
+  // const initialState: State = { message: null, errors: {} };
+  const updateInvoiceWithId = async () => {
+    updateInvoice.bind(null, invoice.id);
+  }
+  // const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
 
   return (
-    <form action={updateInvoiceWithId}>
+    <form onSubmit={updateInvoiceWithId}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">

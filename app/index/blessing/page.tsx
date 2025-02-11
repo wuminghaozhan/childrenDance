@@ -18,7 +18,7 @@ const blessings = [
 
 const icons = [Star, Heart, Music, Sparkles]
 
-export function Blessing() {
+const Blessing = () => {
   const [newBlessing, setNewBlessing] = useState("")
   const [newAuthor, setNewAuthor] = useState("")
 

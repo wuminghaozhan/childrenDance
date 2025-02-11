@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { Music4Icon } from "lucide-react"
-import ChildrenDanceLogo from "../ui/components/children-dance-logo"
 
 function LoginForm() {
   const [loginMethod, setLoginMethod] = useState("phone")

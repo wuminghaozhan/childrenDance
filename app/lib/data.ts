@@ -2,12 +2,14 @@
 // import { sql } from '@vercel/postgres';
 import {
   CustomerField,
-  CustomersTableType,
-  InvoiceForm,
-  InvoicesTable,
-  LatestInvoiceRaw,
+  Revenue,
+  // CustomersTableType,
+  // InvoiceForm,
+  // InvoicesTable,
+  // LatestInvoiceRaw,
 } from './definitions';
 import { formatCurrency } from './utils';
+
 
 
 import { neon } from "@neondatabase/serverless";
@@ -17,7 +19,7 @@ if (!process.env.DATABASE_URL) {
 }
 const sql = neon(process.env.DATABASE_URL);
 
-export async function fetchRevenue() {
+export async function fetchRevenue(): Promise<Revenue[]> {
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
@@ -26,16 +28,24 @@ export async function fetchRevenue() {
 
     // console.log('Data fetch completed after 3 seconds.', data);
 
-    return data;
+    const revenues: Revenue[] = data.map((item) => ({
+      id: item.id,
+      amount: item.amount,
+      date: item.date,
+      month: (new Date(item.date).getMonth() + 1).toString(), // Assuming month is derived from date
+      revenue: item.amount // Assuming revenue is the same as amount
+    }));
+
+    return revenues;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch revenue data.');
   }
 }
 
-export async function fetchLatestInvoices() {
+export async function fetchLatestInvoices(): Promise<{ id:string, amount: string, image_url:string, name:string,email:string }[]> {
   try {
-    const data = await sql<LatestInvoiceRaw>`
+    const data = await sql`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
       JOIN customers ON invoices.customer_id = customers.id
@@ -43,8 +53,11 @@ export async function fetchLatestInvoices() {
       LIMIT 5`;
       console.log('-------.', data);
     const latestInvoices = data.map((invoice) => ({
-      ...invoice,
+      id: invoice.id,
       amount: formatCurrency(invoice.amount),
+      image_url: invoice.image_url,
+      name: invoice.name,
+      email: invoice.email,
     }));
     return latestInvoices;
   } catch (error) {
@@ -91,12 +104,12 @@ export async function fetchCardData() {
 const ITEMS_PER_PAGE = 6;
 export async function fetchFilteredInvoices(
   query: string,
-  currentPage: number,
+  // currentPage: number,
 ) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  // const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
-    const invoices = await sql<InvoicesTable>`
+    const invoices = await sql`
       SELECT
         invoices.id,
         invoices.amount,
@@ -109,12 +122,7 @@ export async function fetchFilteredInvoices(
       JOIN customers ON invoices.customer_id = customers.id
       WHERE
         customers.name ILIKE ${`%${query}%`} OR
-        customers.email ILIKE ${`%${query}%`} OR
-        invoices.amount::text ILIKE ${`%${query}%`} OR
-        invoices.date::text ILIKE ${`%${query}%`} OR
-        invoices.status ILIKE ${`%${query}%`}
-      ORDER BY invoices.date DESC
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+        customers.email ILIKE ${`%${query}%`}
     `;
 
     return invoices;
@@ -145,9 +153,9 @@ export async function fetchInvoicesPages(query: string) {
   }
 }
 
-export async function fetchInvoiceById(id: string) {
+export async function fetchInvoiceById(id: string): Promise<{ id: string, customer_id: string, status: string, amount: number }> {
   try {
-    const data = await sql<InvoiceForm>`
+    const data = await sql`
       SELECT
         invoices.id,
         invoices.customer_id,
@@ -158,7 +166,9 @@ export async function fetchInvoiceById(id: string) {
     `;
 
     const invoice = data.map((invoice) => ({
-      ...invoice,
+      id: invoice.id,
+      customer_id: invoice.customer_id,
+      status: invoice.status,
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
@@ -172,13 +182,13 @@ export async function fetchInvoiceById(id: string) {
 
 export async function fetchCustomers() {
   try {
-    const data = await sql<CustomerField>`
+    const data = await sql`
       SELECT
         id,
         name
       FROM customers
       ORDER BY name ASC
-    `;
+    ` as CustomerField[];
 
     const customers = data;
     return customers;
@@ -190,25 +200,25 @@ export async function fetchCustomers() {
 
 export async function fetchFilteredCustomers(query: string) {
   try {
-    const data = await sql<CustomersTableType>`
-		SELECT
-		  customers.id,
-		  customers.name,
-		  customers.email,
-		  customers.image_url,
-		  COUNT(invoices.id) AS total_invoices,
-		  SUM(CASE WHEN invoices.status = 'pending' THEN invoices.amount ELSE 0 END) AS total_pending,
-		  SUM(CASE WHEN invoices.status = 'paid' THEN invoices.amount ELSE 0 END) AS total_paid
-		FROM customers
-		LEFT JOIN invoices ON customers.id = invoices.customer_id
-		WHERE
-		  customers.name ILIKE ${`%${query}%`} OR
+    const data = await sql`
+    SELECT
+      customers.id,
+      customers.name,
+      customers.email,
+      customers.image_url,
+      COUNT(invoices.id) AS total_invoices,
+      SUM(CASE WHEN invoices.status = 'pending' THEN invoices.amount ELSE 0 END) AS total_pending,
+      SUM(CASE WHEN invoices.status = 'paid' THEN invoices.amount ELSE 0 END) AS total_paid
+    FROM customers
+    LEFT JOIN invoices ON customers.id = invoices.customer_id
+    WHERE
+      customers.name ILIKE ${`%${query}%`} OR
         customers.email ILIKE ${`%${query}%`}
-		GROUP BY customers.id, customers.name, customers.email, customers.image_url
-		ORDER BY customers.name ASC
-	  `;
+    GROUP BY customers.id, customers.name, customers.email, customers.image_url
+    ORDER BY customers.name ASC
+    `;
 
-    const customers = data.rows.map((customer) => ({
+    const customers = data.map((customer) => ({
       ...customer,
       total_pending: formatCurrency(customer.total_pending),
       total_paid: formatCurrency(customer.total_paid),

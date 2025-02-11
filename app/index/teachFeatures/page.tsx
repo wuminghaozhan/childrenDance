@@ -64,8 +64,9 @@ const features = [
   },
 ]
 
-export function TeachingFeatures() {
-  const [selectedFeature, setSelectedFeature] = useState(null)
+function TeachingFeatures() {
+  const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null)
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-pink-50">
@@ -96,7 +97,7 @@ function FeatureCard({ feature, onClick }: { feature: Feature; onClick: () => vo
   return (
     <Card className="cursor-pointer transition-all hover:shadow-lg" onClick={onClick}>
       <CardHeader>
-        <feature.icon className={`w-12 h-12 ${feature.color} mb-4`} aria-hidden="true" />
+        <feature.icon  aria-hidden="true" />
         <CardTitle className="text-xl font-semibold text-orange-700">{feature.title}</CardTitle>
       </CardHeader>
       <CardContent>
