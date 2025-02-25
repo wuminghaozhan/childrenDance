@@ -27,13 +27,11 @@ export async function fetchRevenue(): Promise<Revenue[]> {
     const data = await sql`SELECT * FROM revenue`;
 
     // console.log('Data fetch completed after 3 seconds.', data);
-
+    // console.log('fetchRevenue Data fetch completed.', data);
     const revenues: Revenue[] = data.map((item) => ({
-      id: item.id,
-      amount: item.amount,
-      date: item.date,
-      month: (new Date(item.date).getMonth() + 1).toString(), // Assuming month is derived from date
-      revenue: item.amount // Assuming revenue is the same as amount
+      id: item.month,
+      month: item.month, // Assuming month is derived from date
+      revenue: item.revenue // Assuming revenue is the same as amount
     }));
 
     return revenues;
@@ -51,7 +49,6 @@ export async function fetchLatestInvoices(): Promise<{ id:string, amount: string
       JOIN customers ON invoices.customer_id = customers.id
       ORDER BY invoices.date DESC
       LIMIT 5`;
-      console.log('-------.', data);
     const latestInvoices = data.map((invoice) => ({
       id: invoice.id,
       amount: formatCurrency(invoice.amount),
@@ -144,7 +141,8 @@ export async function fetchInvoicesPages(query: string) {
       invoices.date::text ILIKE ${`%${query}%`} OR
       invoices.status ILIKE ${`%${query}%`}
   `;
-
+    debugger
+    console.log('fetchInvoicesPages Data fetch completed.', count);
     const totalPages = Math.ceil(Number(count[0].count) / ITEMS_PER_PAGE);
     return totalPages;
   } catch (error) {
